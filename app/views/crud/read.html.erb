@@ -1,0 +1,24 @@
+<%= link_to "test" , test_url %>
+<hr>
+
+<%= link_to "all" , crud_read_all_path %>
+<br>
+<br>
+<a> id: <%= @id %></a>
+<h1> <%= @restaurant.name %></h1>
+
+<a> address: <%= @restaurant.address %></a>
+<br>
+<br>
+<%= form_for @restaurant, url: crud_update_id_path, method: :put do |f| %>
+    <%= f.label 'Name' %><br>
+    <%= f.text_field :name %><br>
+
+    <%= f.label 'Address' %><br>
+    <%= f.text_field :address %><br>
+
+    <%= f.submit "Update" %>
+<% end %>
+
+<br>
+<%= link_to 'Remove', crud_read_id_url(@id), method: :delete, data: { confirm: 'Are you sure?' } %>

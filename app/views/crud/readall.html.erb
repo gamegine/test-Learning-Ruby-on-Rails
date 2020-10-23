@@ -1,0 +1,13 @@
+<%= link_to "test" , test_url %>
+<hr>
+
+<h1> restaurants </h1>
+<%= link_to 'create', @dog, method: :post %>
+<ul>
+<% @restaurants.each do | restaurant | %>
+
+    <li> 
+        <%= link_to restaurant.name  , crud_read_id_path(restaurant) %>
+    </li>
+<% end %>
+</ul>
