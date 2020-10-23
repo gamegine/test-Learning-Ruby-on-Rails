@@ -4,4 +4,7 @@ class PagesController < ApplicationController
     end
     def link
     end
+    def restaurants
+        @restaurants = Restaurant.all
+    end
 end
