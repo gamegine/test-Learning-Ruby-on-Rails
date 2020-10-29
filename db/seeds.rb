@@ -10,6 +10,7 @@ require 'faker'
 
 puts "destroy all"
 Restaurant.destroy_all
+Review.destroy_all
 Game.destroy_all
 
 puts "create restaurant"
@@ -21,9 +22,12 @@ end
 
 puts "create game"
 10.times do
-    Game.create(
-        title:Faker::Game.title,
-        genre:Faker::Game.genre,
-        platform:Faker::Game.platform,
-        stars:Faker::Number.digit)
+  elm = Game.create(
+      title:Faker::Game.title,
+      genre:Faker::Game.genre,
+      platform:Faker::Game.platform,
+      stars:Faker::Number.digit)
+  5.times do
+    Review.create(content:Faker::Lorem.paragraph,game:elm)
+  end
 end
