@@ -13,6 +13,8 @@ Restaurant.destroy_all
 Review.destroy_all
 Game.destroy_all
 
+User.destroy_all
+
 puts "create restaurant"
   10.times do
     Restaurant.create(

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :games do
     resources :review, only: [ :new, :create]
   end

@@ -10,6 +10,24 @@
   </head>
 
   <body>
+    <nav>
+      <%= link_to "test" , test_url %> |
+      <%= link_to "restaurants" , restaurants_url %> |
+      <%= link_to "crud" , crud_read_all_url %> |
+      <%= link_to  "games", games_path %>
+
+      <% if user_signed_in? -%>
+        <%= link_to  "sign out", destroy_user_session_path, method: :delete, :style=>'float: right;'%>
+      <% else %>
+        <%= link_to  "sign in", new_user_session_path, :style=>'float: right;'%>
+      <% end -%>
+    </nav>
+
+    <hr>
+
     <%= yield %>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
   </body>
 </html>
