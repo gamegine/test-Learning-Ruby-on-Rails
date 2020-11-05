@@ -14,4 +14,9 @@ Rails.application.routes.draw do
   put 'crud/:id', to: 'crud#update', as: "crud_update_id"
   delete 'crud/:id', to: 'crud#delete', as: "crud_delete_id"
   #resources :crud
+  # namespace :api do
+  #   namespace :v1 do
+  resources :reviews, defaults: {format: :json}
+  #   end
+  # end
 end
