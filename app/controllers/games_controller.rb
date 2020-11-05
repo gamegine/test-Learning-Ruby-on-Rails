@@ -1,10 +1,15 @@
 class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update, :destroy]
 
+
+  after_action :verify_authorized, except: :index
+  after_action :verify_policy_scoped, only: :index
+
+
   # GET /games
   # GET /games.json
   def index
-    @games = Game.all
+    @games = policy_scope(Game.all)
   end
 
   # GET /games/1
@@ -15,6 +20,7 @@ class GamesController < ApplicationController
   # GET /games/new
   def new
     @game = Game.new
+    authorize @game
   end
 
   # GET /games/1/edit
@@ -25,7 +31,7 @@ class GamesController < ApplicationController
   # POST /games.json
   def create
     @game = Game.new(game_params)
-
+    authorize @game
     respond_to do |format|
       if @game.save
         format.html { redirect_to @game, notice: 'Game was successfully created.' }
@@ -64,7 +70,8 @@ class GamesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_game
-      @game = Game.find(params[:id])
+        @game = Game.find(params[:id])
+        authorize @game
     end
 
     # Only allow a list of trusted parameters through.
