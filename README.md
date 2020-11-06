@@ -22,3 +22,15 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+# setup
+old -> bundle install --without production
+bundle config set without 'production'
+bundle install
+rails db:migrate
+rails db:seed
+rails s
+
+
+## heroku
+heroku config:set BUNDLE_WITHOUT=development
