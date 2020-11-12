@@ -36,4 +36,8 @@ jobs:
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
     - name: Run tests
-      run: rails test
+      run: |
+        rails db:drop
+        rails db:migrate
+        rails db:seed
+        rails test
