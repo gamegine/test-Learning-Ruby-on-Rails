@@ -34,3 +34,4 @@ rails s
 
 ## heroku
 heroku config:set BUNDLE_WITHOUT=development
+
