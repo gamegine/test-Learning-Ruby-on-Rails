@@ -55,7 +55,7 @@ jobs:
 
     - name: Run tests
       run: |
-        rails db:drop
-        rails db:migrate
-        rails db:seed
-        rails test
+        bin/rails db:drop
+        bin/rails db:migrate
+        bin/rails db:seed
+        bin/rails test
